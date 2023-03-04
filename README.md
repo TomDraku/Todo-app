@@ -6,7 +6,7 @@ Python 3
 Flask
 Flask SQLAlchemy
 Installation
-Clone the repository: git clone https://github.com/your_username/todo_app.git
+Clone the repository: git clone https://github.com/TomDraku/Todo-app.git
 Change into the project directory: cd todo_app
 Create a virtual environment: python3 -m venv venv
 Activate the virtual environment: source venv/bin/activate
