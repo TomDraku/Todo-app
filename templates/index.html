@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <h1>TODO APP</h1>
+    <form  method="POST" action="{{ url_for('add') }}">
+        <label>Todo Title</label>
+        <input type="text" id ="todo" name="title"><br><br>
+        <button type="submit">Add</button>
+    </form>
+
+    {% if todos %}
+    <ul>
+        {% for todo in todos %}
+                
+            <div id="task">
+                <div id="task_discription">
+                {{ loop.index }}. {{todo.title}}
+                {% if todo.complete %}
+                    <span style="color: green;">  Completed</span>
+                {% else %}
+                    <span style="color: red;"> Not Completed</span>
+                {% endif %}
+                
+                
+                <div id="task_buttons">
+                    <form action="/delete/{{todo.id}}" method="POST">
+                        <button id = delete_button class="btn btn-danger btn-glow-strong btn-outline" type="submit">Delete</button>
+                    </form>
+                    
+                    <form action="/update/{{todo.id}}" method="POST">
+                        <button id = update_button class="btn btn-primary btn-glow-strong btn-outline" type="submit">Update</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+                
+            
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak zadań do wyświetlenia</p>
+{% endif %}
+
+
+
+
+
+
+</body>
